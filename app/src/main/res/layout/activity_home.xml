@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#0F1AB3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:text="TRAFFIKA"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/loggedin_user"
+            android:layout_width="0dp"
+            android:layout_height="49dp"
+            android:layout_weight="0.3"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="16sp"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="logout"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="216dp"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.3"
+        android:background="#4591E6"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="230dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:text=" Your submitted information is confidential, and your identity will not be disclosed to any party or individual."
+            android:textAlignment="center"
+            android:textColor="#FF9800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.798" />
+
+
+        <EditText
+            android:id="@+id/etNumberPlate"
+            android:layout_width="117dp"
+            android:layout_height="75dp"
+            android:background="@drawable/textview_border"
+            android:gravity="start"
+            android:hint="Number Plate of vehicle involved"
+            android:inputType="textMultiLine|text|textAutoCorrect"
+            android:paddingStart="8dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.113"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/etViolation"
+            android:layout_width="216dp"
+            android:layout_height="95dp"
+            android:background="@drawable/textview_border"
+            android:gravity="start"
+            android:inputType="textMultiLine|text|textAutoCorrect"
+            android:paddingStart="8dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.917"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.082"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"
+            android:onClick="submitReport"
+            android:text="Submit"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.803" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="361dp"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/info"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="0.5"
+        android:columnCount="2"
+        android:padding="10dp"
+        android:rowCount="2"
+        android:spacing="10dp">
+
+        <!-- Add Image -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background='#d6d6d6'>
+
+            <ImageButton
+                android:id="@+id/button_add_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:contentDescription="Add Image"
+                android:onClick="onAddImage"
+                app:srcCompat="@drawable/photo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button_add_image"
+                android:layout_centerHorizontal="true"
+                android:text="Add Image" />
+        </RelativeLayout>
+
+        <!-- View -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background='#d6d6d6'>
+
+            <ImageButton
+                android:id="@+id/button_view"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:contentDescription="View Violations"
+                android:onClick="onViewViolations"
+                app:srcCompat="@drawable/view" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button_view"
+                android:layout_centerHorizontal="true"
+                android:text="View" />
+        </RelativeLayout>
+
+        <!-- History -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background='#d6d6d6'>
+
+            <ImageButton
+                android:id="@+id/button_history"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:contentDescription="View your history"
+                android:onClick="onViewHistory"
+                app:srcCompat="@drawable/history" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button_history"
+                android:layout_centerHorizontal="true"
+                android:text="History" />
+        </RelativeLayout>
+
+        <!-- Sanctions -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background='#d6d6d6'>
+
+            <ImageButton
+                android:id="@+id/button_sanctions"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:contentDescription="Manage Sanctions"
+                android:onClick="onManageSanctions"
+                app:srcCompat="@drawable/fine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button_sanctions"
+                android:layout_centerHorizontal="true"
+                android:text="Manage Sanctions" />
+        </RelativeLayout>
+    </GridLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background='#d6d6d6'
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="Home"
+            android:onClick="goHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/home" />
+
+        <ImageButton
+            android:id="@+id/search"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="Search"
+            android:onClick="search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.355"
+            app:layout_constraintStart_toEndOf="@id/home"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/search" />
+
+        <ImageButton
+            android:id="@+id/account"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:contentDescription="Account"
+            android:onClick="goToAccount"
+            app:layout_constraintStart_toEndOf="@id/search"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/account" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        android:visibility="gone"/>
+</RelativeLayout>
